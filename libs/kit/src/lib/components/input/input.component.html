@@ -1,0 +1,64 @@
+<div
+  [class.ngxm-input__group--icon-left-rtl]="iconRtl === 'left'"
+  class="ngxm-input__group mb-0"
+>
+  <label class="ngxm-input__label" *ngIf="label" [attr.for]="identifier"
+    >{{ label }}<sup *ngIf="required === true">*</sup>
+  </label>
+
+  <input
+    class="ngxm-input"
+    #input
+    [ngClass]="className ? className : ''"
+    [attr.maxLength]="maxLength ? maxLength : null"
+    [attr.disabled]="control?.disabled ? true : null"
+    [attr.id]="identifier"
+    [attr.placeholder]="placeholder"
+    [attr.type]="type"
+    [pattern]="pattern"
+    [class.ngxm-input--invalid]="
+      blured && !control?.pristine && control?.invalid
+    "
+    [class.is-valid]="blured && control?.valid"
+    [class.ngxm-input--with-icon]="enableEye || enableLoop"
+    (change)="onChange($event)"
+    (blur)="onBlur()"
+    (keyup)="onKeyUp($event)"
+  />
+
+  <div class="ngxm-input__loop" *ngIf="enableLoop && type === 'search'">
+    <span class="ngxm-input__loop-icon"></span>
+  </div>
+
+  <div
+    class="ngxm-input__eye"
+    *ngIf="enableEye && (type === 'password' || type === 'text')"
+  >
+    <span
+      class="ngxm-input__eye-icon ngxm-input__eye-icon--off"
+      *ngIf="type === 'password'"
+      (click)="type = 'text'"
+    ></span>
+    <span
+      class="ngxm-input__eye-icon ngxm-input__eye-icon--on"
+      *ngIf="type === 'text'"
+      (click)="type = 'password'"
+    ></span>
+  </div>
+  <div
+    class="ngxm-input__invalid-feedback"
+    *ngIf="!disableErrorMessage && !this.control?.disabled"
+    [@visibilityChanged]="blured && control?.invalid && control?.dirty"
+  >
+    <span class="ngxm-input__invalid-feedback-box">{{
+      error | errorMessage : control?.errors | async
+    }}</span>
+  </div>
+
+  <span class="ngxm-input__description" *ngIf="description">
+    <small
+      [innerHTML]="description"
+      [@visibilityChanged]="(control?.valid && blured) || !blured"
+    ></small>
+  </span>
+</div>
