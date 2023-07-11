@@ -1,9 +1,10 @@
 {
-  "name": "@ngx-formus/kit",
+  "name": "ngx-formus",
+  "description": "Ngx Formus Input - simplify, open-source input component for Angular.",
   "version": "0.0.1",
   "peerDependencies": {
-    "@angular/common": "^16.1.0",
-    "@angular/core": "^16.1.0"
+    "@angular/common": "^10.1.0",
+    "@angular/core": "^10.1.0"
   },
   "dependencies": {
     "tslib": "^2.3.0"
@@ -11,6 +12,10 @@
   "author": {
     "email": "maxonmishin@gmail.com",
     "name": "Max <maxouni> Mishin"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maxouni/ngx-formus"
   },
   "sideEffects": false
 }

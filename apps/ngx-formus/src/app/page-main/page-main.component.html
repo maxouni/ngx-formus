@@ -1,0 +1,24 @@
+<div>
+  <h1>Ngx-formus</h1>
+
+  <ngx-formus-input
+    [pattern]="patterns[paramsPattern]"
+    [enableLoop]="paramsShowLoop === 'true'"
+    [error]="paramsError"
+    [type]="paramsType"
+    [required]="paramsRequired === 'true'"
+    [label]="paramsLabel"
+    [description]="paramsDescription"
+    [formControlName]="'testControl'"
+  >
+
+  </ngx-formus-input>
+  <pre *ngIf="testControl">
+Test control disabled: {{ testControl.disabled }}
+Test control status: {{ testControl.status }}
+Test control dirty: {{ testControl.dirty }}
+Test control pristine: {{ testControl.pristine }}
+Test control touched: {{ testControl.touched }}
+</pre
+>
+</div>

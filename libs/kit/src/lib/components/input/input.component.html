@@ -1,13 +1,13 @@
 <div
-  [class.ngxm-input__group--icon-left-rtl]="iconRtl === 'left'"
-  class="ngxm-input__group mb-0"
+  [class.ngx-formus-input__group--icon-left-rtl]="iconRtl === 'left'"
+  class="ngx-formus-input__group mb-0"
 >
-  <label class="ngxm-input__label" *ngIf="label" [attr.for]="identifier"
+  <label class="ngx-formus-input__label" *ngIf="label" [attr.for]="identifier"
     >{{ label }}<sup *ngIf="required === true">*</sup>
   </label>
 
   <input
-    class="ngxm-input"
+    class="ngx-formus-input"
     #input
     [ngClass]="className ? className : ''"
     [attr.maxLength]="maxLength ? maxLength : null"
@@ -16,46 +16,46 @@
     [attr.placeholder]="placeholder"
     [attr.type]="type"
     [pattern]="pattern"
-    [class.ngxm-input--invalid]="
+    [class.ngx-formus-input--invalid]="
       blured && !control?.pristine && control?.invalid
     "
     [class.is-valid]="blured && control?.valid"
-    [class.ngxm-input--with-icon]="enableEye || enableLoop"
+    [class.ngx-formus-input--with-icon]="enableEye || enableLoop"
     (change)="onChange($event)"
     (blur)="onBlur()"
     (keyup)="onKeyUp($event)"
   />
 
-  <div class="ngxm-input__loop" *ngIf="enableLoop && type === 'search'">
-    <span class="ngxm-input__loop-icon"></span>
+  <div class="ngx-formus-input__loop" *ngIf="enableLoop && type === 'search'">
+    <span class="ngx-formus-input__loop-icon"></span>
   </div>
 
   <div
-    class="ngxm-input__eye"
+    class="ngx-formus-input__eye"
     *ngIf="enableEye && (type === 'password' || type === 'text')"
   >
     <span
-      class="ngxm-input__eye-icon ngxm-input__eye-icon--off"
+      class="ngx-formus-input__eye-icon ngx-formus-input__eye-icon--off"
       *ngIf="type === 'password'"
       (click)="type = 'text'"
     ></span>
     <span
-      class="ngxm-input__eye-icon ngxm-input__eye-icon--on"
+      class="ngx-formus-input__eye-icon ngx-formus-input__eye-icon--on"
       *ngIf="type === 'text'"
       (click)="type = 'password'"
     ></span>
   </div>
   <div
-    class="ngxm-input__invalid-feedback"
+    class="ngx-formus-input__invalid-feedback"
     *ngIf="!disableErrorMessage && !this.control?.disabled"
     [@visibilityChanged]="blured && control?.invalid && control?.dirty"
   >
-    <span class="ngxm-input__invalid-feedback-box">{{
+    <span class="ngx-formus-input__invalid-feedback-box">{{
       error | errorMessage : control?.errors | async
     }}</span>
   </div>
 
-  <span class="ngxm-input__description" *ngIf="description">
+  <span class="ngx-formus-input__description" *ngIf="description">
     <small
       [innerHTML]="description"
       [@visibilityChanged]="(control?.valid && blured) || !blured"

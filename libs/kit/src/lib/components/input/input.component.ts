@@ -1,15 +1,27 @@
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
-  Component, ElementRef,
+  Component,
+  ElementRef,
   forwardRef,
   Injector,
   Input,
-  ViewChild
-} from "@angular/core";
-import { FormControl, NG_VALUE_ACCESSOR, NgControl } from "@angular/forms";
-import { NgxFormInputType, NgxFormInputValue, NgxRequiredType } from "../../interfaces";
-import { distinctUntilChanged, Subject, takeUntil } from "rxjs";
+  ViewChild,
+} from '@angular/core';
+import { FormControl, NG_VALUE_ACCESSOR, NgControl } from '@angular/forms';
+import {
+  NgxFormInputType,
+  NgxFormInputValue,
+  NgxRequiredType,
+} from '../../interfaces';
+import { distinctUntilChanged, Subject, takeUntil } from 'rxjs';
+import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
 
 @Component({
   selector: 'ngx-formus-input',
@@ -22,6 +34,15 @@ import { distinctUntilChanged, Subject, takeUntil } from "rxjs";
       useExisting: forwardRef(() => InputComponent),
       multi: true,
     },
+  ],
+  animations: [
+    trigger('visibilityChanged', [
+      state('null', style({ opacity: 0 })),
+      state('undefined', style({ opacity: 0 })),
+      state('false', style({ opacity: 0 })),
+      state('true', style({ opacity: 1 })),
+      transition('*=>*', animate('300ms')),
+    ]),
   ],
 })
 export class InputComponent {
@@ -101,9 +122,8 @@ export class InputComponent {
 
   constructor(
     private injector: Injector,
-    private cd: ChangeDetectorRef,
-  ) // @Optional()
-  // @Inject(NgxmPasswordEyeDirective)
+    private cd: ChangeDetectorRef // @Optional()
+  ) // @Inject(NgxmPasswordEyeDirective)
   // readonly ngxmPasswordEye: NgxmPasswordEyeDirective | null,
   {}
 
@@ -114,7 +134,7 @@ export class InputComponent {
       this.control.statusChanges
         .pipe(
           distinctUntilChanged((a, b) => a === b),
-          takeUntil(this.destroy$),
+          takeUntil(this.destroy$)
         )
         .subscribe((status) => {
           if (status === 'DISABLED') {
