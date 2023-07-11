@@ -1,11 +1,12 @@
 {
   "name": "ngx-formus",
   "description": "Ngx Formus Input - simplify, open-source input component for Angular.",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "peerDependencies": {
     "@angular/common": ">=10.1.0",
     "@angular/core": ">=10.1.0",
-    "@angular/animations": ">=10.1.0"
+    "@angular/animations": ">=10.1.0",
+    "@angular/forms": ">=10.1.0"
   },
   "dependencies": {
     "tslib": "^2.3.0"
