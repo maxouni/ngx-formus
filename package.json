@@ -1,11 +1,12 @@
 {
   "name": "@ngx-formus/source",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "license": "MIT",
   "scripts": {
     "nx": "nx",
     "start:demo": "nx run ngx-formus:serve",
-    "build:demo": "nx build ngx-formus --configuration production --base-href https://maxouni.github.io/ngx-formus/"
+    "build:demo": "nx build ngx-formus --configuration production --base-href https://maxouni.github.io/ngx-formus/",
+    "publish": "nx build ngx-formus --configuration production && cd dist/libs/kit && npm pack && npm publish"
   },
   "private": true,
   "dependencies": {
